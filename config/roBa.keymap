@@ -91,19 +91,19 @@
 
         Num {
             bindings = <
-&trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3                      &trans       &trans      &trans        &trans         &trans
-&trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans      &trans  &kp SLASH    &kp EQUAL   &kp ASTERISK  &kp PLUS       &trans
-&trans  &trans  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp A       &kp AT  &kp PERCENT  &kp PERIOD  &kp COLON     &kp SEMICOLON  &trans
-&trans  &trans  &kp NUMBER_0  &trans        &trans        &trans      &trans  &trans                                                &trans
+&trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3                         &trans       &trans      &trans        &trans         &trans
+&trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans         &trans  &kp SLASH    &kp EQUAL   &kp ASTERISK  &kp PLUS       &trans
+&trans  &trans  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp GRAVE      &kp AT  &kp PERCENT  &kp PERIOD  &kp COLON     &kp SEMICOLON  &trans
+&trans  &trans  &kp NUMBER_0  &trans        &trans        &trans         &trans  &trans                                                &trans
             >;
         };
 
         Mark {
             bindings = <
-&trans  &trans         &trans            &trans          &trans                                                             &trans                 &trans           &trans             &kp TILDE         &trans
-&trans  &kp PIPE       &kp AMPERSAND     &kp EXCL        &kp QUESTION          &kp LC(LA(KP_NUMBER_0))      &kp UNDERSCORE  &kp LEFT               &kp DOWN         &kp UP             &kp RIGHT         &trans
-&trans  &kp LESS_THAN  &kp LEFT_BRACKET  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp SQT                      &kp DQT         &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp GREATER_THAN  &trans
-&trans  &trans         &trans            &trans          &trans                &trans                       &trans          &trans                                                                       &trans
+&trans  &trans         &trans            &trans          &trans                                             &trans                 &trans           &trans             &kp TILDE         &trans
+&trans  &kp PIPE       &kp AMPERSAND     &kp EXCL        &kp QUESTION          &trans       &kp UNDERSCORE  &kp LEFT               &kp DOWN         &kp UP             &kp RIGHT         &trans
+&trans  &kp LESS_THAN  &kp LEFT_BRACKET  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp SQT      &kp DQT         &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp GREATER_THAN  &trans
+&trans  &trans         &trans            &trans          &trans                &trans       &trans          &trans                                                                       &trans
             >;
         };
 
