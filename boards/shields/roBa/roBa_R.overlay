@@ -17,7 +17,7 @@
 
 / {
     // マウススクロール量を調整するためのスケーラー
-    // <倍率 除数> = <1 2> でスクロール量を半分に。除数を増やすほど少なくなる
+    // <倍率 除数> = <2 1> でスクロール量を2倍に。倍率を上げるほど多くなる
     scroll_scaler: scroll_scaler {
         compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <2>;
@@ -30,7 +30,7 @@
         status = "okay";
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&scroll_scaler 1 2>;
+        input-processors = <&scroll_scaler 2 1>;
     };
 };
 
