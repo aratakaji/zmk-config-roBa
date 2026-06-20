@@ -1,9 +1,41 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
+#include <dt-bindings/zmk/keys.h>
 
 / {
     chosen {
         zmk,physical-layout = &roba_physical_layout;
+    };
+
+    // --- GUI(keymap-editor)に消されないカスタム定義 -------------------------
+    // keymap-editor は hold-tap や one-param マクロを理解できず削除してしまうため、
+    // GUIが管理する config/roBa.keymap ではなく、ここ(roBa.dtsi)に定義する。
+    // keymap 側は参照(&shift_esc_eisu LEFT_SHIFT 0)だけ残せば解決される。
+    macros {
+        // hold-tap のタップ側で使うマクロ: ESC → LANG2(英数) を送る。
+        // hold-tap のタップ側に渡すため one-param 形式(引数は未使用)。
+        // IME変換中に composition が消える場合は ESC と LANG2 の順を入れ替える。
+        eisu_esc: eisu_esc {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&kp ESC &kp LANG2>;
+            label = "EISU_ESC";
+        };
+    };
+
+    behaviors {
+        // 長押し = LEFT_SHIFT / タップ = ESC + LANG2(英数)
+        // 旧 &mt LEFT_SHIFT ESCAPE の置き換え。&mt と違いタップ側にマクロを使える。
+        // 使い方(keymap側): &shift_esc_eisu LEFT_SHIFT 0  (2番目の 0 はダミー)
+        shift_esc_eisu: shift_esc_eisu {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SHIFT_ESC_EISU";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            bindings = <&kp>, <&eisu_esc>;
+        };
     };
 
     roba_physical_layout: roba_physical_layout {
