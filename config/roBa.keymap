@@ -1,5 +1,5 @@
-#include <behaviors.dtsi>
 #include <layout_shift_kp_override.dtsi>
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
@@ -9,10 +9,12 @@
 // !!! 必ず behaviors.dtsi より「下」に置くこと（上に置くと &kp が未定義になり壊れる）。
 // GUI(keymap-editor)で保存するとこの行が先頭へ移動して壊れるが、
 // ビルド時に .github/workflows/build.yml が自動で正しい順序へ並べ替える。
-
 // トグルが制御するレイアウトマップ = US -> JIS のみ
+
 &tog_ls { layout-maps = <&layout_shift_map_us_to_jis>; };
+
 &tog_ls_on { layout-maps = <&layout_shift_map_us_to_jis>; };
+
 &tog_ls_off { layout-maps = <&layout_shift_map_us_to_jis>; };
 
 &mt {
@@ -112,10 +114,10 @@
 
         default_layer {
             bindings = <
-&kp Q        &kp W          &kp E       &kp R       &kp T                                                            &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A        &kp S          &kp D       &kp F       &kp G        &lt 5 TAB                  &kp CARET                &kp H        &kp J  &kp K      &kp L    &mt RIGHT_COMMAND MINUS
-&kp Z        &kp X          &kp C       &kp V       &kp B        &mt LCTRL LANG2            &mt RIGHT_COMMAND LANG1  &kp N        &kp M  &kp COMMA  &kp DOT  &kp DLLR
-&coment_out  &kp BACKSLASH  &caps_word  &lt 3 HASH  &lt 2 SPACE  &mt LEFT_SHIFT ESCAPE      &kp BACKSPACE            &lt 1 ENTER                             &kp UNDERSCORE
+&kp Q        &kp W          &kp E       &kp R       &kp T                                                    &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp A        &kp S          &kp D       &kp F       &kp G        &mt LCTRL LANGUAGE_2       &mt RCTRL LANG1  &kp H        &kp J  &kp K      &kp L    &mt RIGHT_COMMAND MINUS
+&kp Z        &kp X          &kp C       &kp V       &kp B        &lt 5 TAB                  &kp CARET        &kp N        &kp M  &kp COMMA  &kp DOT  &kp DLLR
+&coment_out  &kp BACKSLASH  &caps_word  &lt 3 HASH  &lt 2 SPACE  &mt LEFT_SHIFT ESCAPE      &kp BACKSPACE    &lt 1 ENTER                             &kp UNDERSCORE
             >;
 
             // エンコーダ: マウスホイールスクロール（旧: &inc_dec_kp PAGE_DOWN PAGE_UP）
