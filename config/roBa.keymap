@@ -9,13 +9,9 @@
 // !!! 必ず behaviors.dtsi より「下」に置くこと（上に置くと &kp が未定義になり壊れる）。
 // GUI(keymap-editor)で保存するとこの行が先頭へ移動して壊れるが、
 // ビルド時に .github/workflows/build.yml が自動で正しい順序へ並べ替える。
-// トグルが制御するレイアウトマップ = US -> JIS のみ
-
-&tog_ls { layout-maps = <&layout_shift_map_us_to_jis>; };
-
-&tog_ls_on { layout-maps = <&layout_shift_map_us_to_jis>; };
-
-&tog_ls_off { layout-maps = <&layout_shift_map_us_to_jis>; };
+//
+// 変換先(JIS)は roBa_R.conf / roBa_L.conf の CONFIG_LAYOUT_SHIFT_TARGET_JIS=y で指定。
+// (以前の "&tog_ls { layout-maps = ...; }" は存在しないプロパティで誤りだったため削除)
 
 &mt {
     flavor = "balanced";
@@ -149,7 +145,7 @@
 
         Device {
             bindings = <
-&trans  &trans  &kp LC(NUMBER_1)  &kp LC(NUMBER_2)  &kp LC(NUMBER_3)                               &bt_mac            &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &bt_win
+&tog_ls  &trans  &kp LC(NUMBER_1)  &kp LC(NUMBER_2)  &kp LC(NUMBER_3)                               &bt_mac            &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &bt_win
 &trans  &trans  &kp LC(NUMBER_4)  &kp LC(NUMBER_5)  &kp LC(NUMBER_6)  &kp PRINTSCREEN      &gmail  &kp LS(LC(LG(H)))  &kp RG(LC(F))      &kp LS(LC(LG(K)))  &kp LS(LG(LC(L)))  &trans
 &trans  &trans  &kp LC(NUMBER_7)  &kp LC(NUMBER_8)  &kp LC(NUMBER_9)  &trans               &trans  &kp K_MUTE         &kp C_VOLUME_DOWN  &kp C_VOLUME_UP    &trans             &trans
 &trans  &trans  &trans            &trans            &trans            &trans               &trans  &trans                                                                      &trans
