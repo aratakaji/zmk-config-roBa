@@ -10,8 +10,11 @@
 // GUI(keymap-editor)で保存するとこの行が先頭へ移動して壊れるが、
 // ビルド時に .github/workflows/build.yml が自動で正しい順序へ並べ替える。
 //
-// 変換先(JIS)は roBa_R.conf / roBa_L.conf の CONFIG_LAYOUT_SHIFT_TARGET_JIS=y で指定。
-// (以前の "&tog_ls { layout-maps = ...; }" は存在しないプロパティで誤りだったため削除)
+// 注意: 下の layout-maps 行は削除しないこと。これが US->JIS マップノードを
+// 参照して有効化している（消すと /omit-if-no-ref/ でマップが消えビルドが壊れる）。
+&tog_ls { layout-maps = <&layout_shift_map_us_to_jis>; };
+&tog_ls_on { layout-maps = <&layout_shift_map_us_to_jis>; };
+&tog_ls_off { layout-maps = <&layout_shift_map_us_to_jis>; };
 
 &mt {
     flavor = "balanced";
