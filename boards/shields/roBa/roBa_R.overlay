@@ -37,9 +37,9 @@
 };
 
 &zip_temp_layer {
-    // Ctrl/Command/ShiftのホールドとJ/Kのクリック中はMOUSEレイヤーを維持する。
+    // Ctrl/Command/ShiftのホールドとJ/Kのクリック、M/,のコピー/貼り付け中はMOUSEレイヤーを維持する。
     // 修飾キー兼用キーのタップ側は専用behaviorから明示的に解除する。
-    excluded-positions = <15 16 18 19 33 39>;
+    excluded-positions = <15 16 18 19 30 31 33 39>;
 };
 
 &pinctrl {
