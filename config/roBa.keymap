@@ -22,7 +22,6 @@
 };
 
 &trackball {
-    automouse-layer = <4>;
     scroll-layers = <5>;
 
     // arrows {
@@ -120,8 +119,8 @@
         default_layer {
             bindings = <
 &kp Q        &kp W          &kp E       &kp R       &kp T                                                           &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A        &kp S          &kp D       &kp F       &kp G        &mt LCTRL LANGUAGE_2              &mt RCTRL LANG1  &kp H        &kp J  &kp K      &kp L    &lt 5 MINUS
-&kp Z        &kp X          &kp C       &kp V       &kp B        &kp TAB                           &kp CARET        &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_COMMAND DOLLAR
+&kp A        &kp S          &kp D       &kp F       &kp G        &mt_exit_aml_on_tap LCTRL LANGUAGE_2              &mt_exit_aml_on_tap RCTRL LANG1  &kp H        &kp J  &kp K      &kp L    &lt 5 MINUS
+&kp Z        &kp X          &kp C       &kp V       &kp B        &kp TAB                                       &kp CARET        &kp N        &kp M  &kp COMMA  &kp DOT  &mt_exit_aml_on_tap RIGHT_COMMAND DOLLAR
 &coment_out  &kp BACKSLASH  &caps_word  &lt 3 HASH  &lt 2 SPACE  &shift_esc_eisu LEFT_SHIFT 0      &kp BACKSPACE    &lt 1 ENTER                             &kp UNDERSCORE
             >;
 

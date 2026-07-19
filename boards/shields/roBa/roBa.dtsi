@@ -138,20 +138,65 @@
 #undef RC
 #include <dt-bindings/zmk/keys.h>
 
+#ifndef MACRO_PLACEHOLDER
+#define MACRO_PLACEHOLDER 0
+#endif
+
+#define MOUSE_LAYER 4
+
 / {
     macros {
+        // MOUSEレイヤーを明示的にOFFにする。
+        exit_aml: exit_aml {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&tog_off MOUSE_LAYER>;
+            label = "EXIT_AML";
+        };
+
+        // Mod-Tapのタップ側で、キー入力後にMOUSEレイヤーを解除する。
+        kp_exit_aml: kp_exit_aml {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &exit_aml>;
+            label = "KP_EXIT_AML";
+        };
+
         // hold-tap のタップ側で使うマクロ: ESC → LANG2(英数) を送る。
         // one-param 形式(引数は未使用)。IME変換中に文字が消える場合は
         // ESC と LANG2 の順を入れ替えると改善することがある。
         eisu_esc: eisu_esc {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&kp ESC &kp LANG2>;
+            bindings = <&kp ESC &kp LANG2 &exit_aml>;
             label = "EISU_ESC";
         };
     };
 
     behaviors {
+        // レイヤーをトグルせず、指定レイヤーを必ずOFFにする。
+        tog_off: toggle_layer_off {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer Off";
+            toggle-mode = "off";
+        };
+
+        // ホールド時は修飾キーとしてAMLを維持し、タップ時だけAMLを解除する。
+        mt_exit_aml_on_tap: mt_exit_aml_on_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_EXIT_AML_ON_TAP";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            bindings = <&kp>, <&kp_exit_aml>;
+        };
+
         // 長押し = LEFT_SHIFT / タップ = ESC + LANG2(英数)
         // 旧 &mt LEFT_SHIFT ESCAPE の置き換え。&mt と違いタップ側にマクロを使える。
         // 使い方(keymap側): &shift_esc_eisu LEFT_SHIFT 0  (2番目の 0 はダミー)
